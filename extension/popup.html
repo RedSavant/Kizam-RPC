@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kizam Discord RPC</title>
+  <style>
+    :root {
+      --bg: #0f1015;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f2f3f5;
+      --text-muted: #949ba4;
+      --accent: #5865f2;
+      --online: #23a55a;
+      --offline: #f23f43;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 280px;
+      font-family: 'gg sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 16px;
+      user-select: none;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .header img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    .header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--text);
+    }
+
+    /* Status Bar */
+    .status-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .dot-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--offline);
+      transition: background 0.3s ease;
+    }
+
+    .dot.ok {
+      background: var(--online);
+      box-shadow: 0 0 10px rgba(35, 165, 90, 0.5);
+    }
+
+    .dot.ok::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--online);
+      animation: pulse 2s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    #status {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .state-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .state-header {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .state-content {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .state-content .label {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="./icons/favicon.png" alt="Logo Kizam" />
+    <h1>Kizam Discord RPC</h1>
+  </div>
+
+  <div class="status-card">
+    <div class="dot-wrapper">
+      <span id="dot" class="dot"></span>
+    </div>
+    <span id="status">Vérification du statut…</span>
+  </div>
+
+  <div class="state-card">
+    <div class="state-header">Activité actuelle</div>
+    <div class="state-content" id="state">Aucun statut reçu pour le moment.</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

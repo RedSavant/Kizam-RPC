@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Kizam Discord RPC",
+  "version": "1.0.0",
+  "description": "Show your Kizam.fr activity in discord RPC.",
+  "permissions": ["alarms", "storage", "tabs"],
+  "host_permissions": ["https://kizam.fr/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://kizam.fr/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Kizam Discord RPC"
+  }
+}
