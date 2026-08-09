@@ -3,7 +3,7 @@ const { Client } = require("@xhayper/discord-rpc");
 const { WebSocketServer } = require("ws");
 
 
-const DEFAULT_CLIENT_ID = "1438871606519791810"; // CLIENTID of Kizam APP (change it in the .env)
+const DEFAULT_CLIENT_ID = "1536021061454528572"; // CLIENTID of Kizam APP (change it in the .env)
 
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID || DEFAULT_CLIENT_ID;
 const PORT = process.env.BRIDGE_PORT ? Number(process.env.BRIDGE_PORT) : 7654;
