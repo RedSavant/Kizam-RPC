@@ -68,19 +68,35 @@ By default, the bridge uses a shared "KIZAM" app client ID. To use your own app 
 4. Upload an asset named `kizam_logo` under **Rich Presence -> Art Assets**.
 
 ### Auto-start on Linux (`systemd`)
-A systemd user unit is included so you don't have to keep a terminal window open:
+A systemd user unit is included so you don't have to keep a terminal window open. The setup script generates the service from the template (`bridge/kizam-rpc-bridge.service`), substitutes the actual bridge path, installs dependencies if needed, then enables and starts the unit:
 
+```bash
+cd bridge
+./install-service.sh
+```
+
+Requirements:
+- `node` available in your `PATH` (otherwise the script aborts).
+- Your repo kept at its current location — moving it afterwards breaks the path baked into the unit.
+
+View logs at any time with:
+```bash
+journalctl --user -u kizam-rpc-bridge -f
+```
+
+Status / uninstall:
+```bash
+systemctl --user status kizam-rpc-bridge              # état du service
+systemctl --user disable --now kizam-rpc-bridge       # arrêter et retirer du démarrage
+```
+
+To do it manually instead of using the script:
 ```bash
 mkdir -p ~/.config/systemd/user
 cp bridge/kizam-rpc-bridge.service ~/.config/systemd/user/
 # Edit the service file if your repo isn't in ~/Downloads/kizam-rpc
 systemctl --user daemon-reload
 systemctl --user enable --now kizam-rpc-bridge.service
-```
-
-View logs at any time with:
-```bash
-journalctl --user -u kizam-rpc-bridge -f
 ```
 
 ---
