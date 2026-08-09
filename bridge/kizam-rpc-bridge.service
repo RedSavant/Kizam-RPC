@@ -1,0 +1,14 @@
+[Unit]
+Description=Kizam Discord RPC
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=@BRIDGE_DIR@
+ExecStart=/usr/bin/env node @BRIDGE_DIR@/index.js
+Restart=on-failure
+RestartSec=5
+EnvironmentFile=-@BRIDGE_DIR@/.env
+
+[Install]
+WantedBy=default.target
