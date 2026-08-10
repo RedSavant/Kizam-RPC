@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://kizam.fr/img/favicon.png" alt="Kizam icon">
+</div>
+
 # Kizam Discord Rich Presence
 
 Show your live activity on [kizam.fr](https://kizam.fr) directly on your Discord status (In Menu, Searching, Playing, Results, etc.).
