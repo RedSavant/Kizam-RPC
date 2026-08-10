@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://kizam.fr/img/favicon.png" alt="Kizam icon">
+</div>
+
 # Kizam Discord Rich Presence
 
 Show your live activity on [kizam.fr](https://kizam.fr) directly on your Discord status (In Menu, Searching, Playing, Results, etc.).
@@ -19,10 +23,10 @@ kizam.fr -> Content Script -> Service Worker -> WebSocket -> Node Bridge -> IPC 
 > **Note:** Make sure the Discord desktop app is running.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/kizam-rpc.git
+git clone https://github.com/RedSavant/Kizam-RPC.git
 cd kizam-rpc/bridge
-npm install
-npm start
+pnpm install
+pnpm start
 ```
 
 You should see:
